@@ -5,9 +5,14 @@ import os
 
 card = [11, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10]
 
+def clear():
+    if os.name == 'posix':
+        os.system('clear')
+    else:
+        os.system('cls')
 
 def game():
-    os.system("cls")
+    clear()
     starts = input("Do you want to play a game of Blackjack? Type 'y' or 'n':")
     while starts == "y":
         print(logo)
@@ -41,7 +46,7 @@ def game():
             if total_point_user > 21:
                 print(f"Computer's final hand: {dealer_cards}, final score: {total_point_dealer}")
                 print("you lost dealer won")
-                os.system("cls")
+                clear()
                 game()
             add_card = input("Type 'y' to get another card, type 'n' to pass:")
         while total_point_dealer < 16:
@@ -65,7 +70,7 @@ def game():
         elif total_point_dealer == total_point_user:
             print("its draw")
         starts = input("Do you want to play a game of Blackjack? Type 'y' or 'n':")
-        os.system("cls")
+        clear()
 
-
-game()
+if __name__ == "__main__":
+    game()
